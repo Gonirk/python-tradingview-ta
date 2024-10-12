@@ -238,3 +238,21 @@ class Compute:
             return Recommendation.buy
         else:
             return Recommendation.neutral
+
+    def SMC(order_block_low, order_block_high, close):
+        """Compute Smart Money Concepts [LuxAlgo]
+
+        Args:
+            order_block_low (float): Lower price level of the order block.
+            order_block_high (float): Upper price level of the order block.
+            close (float): Close price of the current candle.
+
+        Returns:
+            string: "BUY", "SELL", or "NEUTRAL"
+        """
+        if close < order_block_low:
+            return Recommendation.buy
+        elif close > order_block_high:
+            return Recommendation.sell
+        else:
+            return Recommendation.neutral
